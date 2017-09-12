@@ -1,19 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-<<<<<<< HEAD
-
-import { LoginPage } from '../login/login';
-/**
- * Generated class for the ListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage({
- /*  name: 'login',
-  segment: 'list' */
-=======
 // import { Http } from '@angular/http';
 // import 'rxjs/add/operator/map';
 import { DetailPage } from '../../pages/detail/detail';
@@ -24,7 +10,6 @@ import { DetailPage } from '../../pages/detail/detail';
 @IonicPage({
   name: 'list',
   segment: 'list'
->>>>>>> cd26feafae6247cee5e63b85cdee05345935d2e0
 })
 @Component({
   selector: 'page-list',
@@ -32,20 +17,6 @@ import { DetailPage } from '../../pages/detail/detail';
 })
 export class ListPage {
 
-<<<<<<< HEAD
-  rootPage = LoginPage;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ListPage');
-  }
-
-  gotoPage() {
-    console.log('SUCCESS!');
-    this.navCtrl.push(LoginPage);
-=======
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
@@ -107,7 +78,6 @@ export class ListPage {
       //   tel: 'xxxxxxxxx'
       // }
     )
->>>>>>> cd26feafae6247cee5e63b85cdee05345935d2e0
   }
 
 }

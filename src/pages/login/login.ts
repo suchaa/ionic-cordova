@@ -8,14 +8,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-<<<<<<< HEAD
-@IonicPage()
-=======
 @IonicPage({
   name: 'login',
   segment: 'login'
 })
->>>>>>> cd26feafae6247cee5e63b85cdee05345935d2e0
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -29,8 +25,4 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> cd26feafae6247cee5e63b85cdee05345935d2e0
 }
