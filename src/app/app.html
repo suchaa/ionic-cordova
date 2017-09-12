@@ -1,6 +1,17 @@
-<!-- <ion-nav [root]="rootPage"></ion-nav> -->
+<ion-nav #nav [root]="rootPage" swipeBackEnabled="false"></ion-nav>
 
-<ion-nav id="nav" [root]="rootPage" #nav swipeBackEnabled="false"></ion-nav>
+<ion-menu [content]="nav" >
+    
+        <ion-content>
+          <ion-list>
+            <button ion-item *ngFor="let p of page" (click)="openPage(p)" >{{p.title}}</button>
+            <button ion-item menuToggle >Close</button>
+          </ion-list>
+        </ion-content>
+      
+      </ion-menu> 
+
+<!-- <ion-nav id="nav" [root]="rootPage" #nav swipeBackEnabled="false"></ion-nav>
 
 <ion-menu [content]="nav">
     
@@ -12,13 +23,13 @@
     
       <ion-content>
         <ion-list>
-          <!-- <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
             {{p.title}}
-          </button> -->
+          </button>
           <button ion-item>one page</button>
           <button ion-item>two page</button>
           <button ion-item>three page</button>
         </ion-list>
       </ion-content>
     
-    </ion-menu>
+    </ion-menu> -->
