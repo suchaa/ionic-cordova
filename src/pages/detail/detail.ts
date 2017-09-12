@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the DetailPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-
 @IonicPage({
   name: 'detail',
   segment: 'detail'
@@ -18,11 +11,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DetailPage {
 
+  listData = [];
+  id: string;
+  name: string;
+  nick: string;
+  social: string;
+  tel: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  
   }
 
-  ionViewDidLoad() {
+  ionViewDidLoad() {  
     console.log('ionViewDidLoad DetailPage');
+
+    //this.name = this.navParams.get('name');
+    //console.log(this.name);
+    
   }
 
 }

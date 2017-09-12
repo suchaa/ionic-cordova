@@ -1,15 +1,15 @@
 <ion-nav #nav [root]="rootPage" swipeBackEnabled="false"></ion-nav>
 
-<ion-menu [content]="nav" >
-    
-        <ion-content>
-          <ion-list>
-            <button ion-item *ngFor="let p of page" (click)="openPage(p)" >{{p.title}}</button>
-            <button ion-item menuToggle >Close</button>
-          </ion-list>
-        </ion-content>
-      
-      </ion-menu> 
+<ion-menu [content]="nav">
+
+  <ion-content>
+    <ion-list>
+      <button ion-item *ngFor="let p of page" (click)="openPage(p)">{{p.title}}</button>
+      <button ion-item menuToggle>Close</button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
 
 <!-- <ion-nav id="nav" [root]="rootPage" #nav swipeBackEnabled="false"></ion-nav>
 
