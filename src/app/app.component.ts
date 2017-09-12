@@ -11,7 +11,7 @@ import { LoginPage } from '../pages/login/login';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = HomePage; //หน้าแรก
   page: [{
     title: 'list',
     Component: ListPage
@@ -30,5 +30,7 @@ export class MyApp {
       splashScreen.hide();
     });
   }
+
+
 }
 

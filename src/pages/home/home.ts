@@ -12,5 +12,10 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
 
   }
+  
+   openPage(){
+    console.log('SUCCESS');
+    
+  }
 
 }
