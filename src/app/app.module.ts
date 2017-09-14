@@ -7,11 +7,16 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+
+//import { LoginPage } from '../pages/login/login';
+//import { ListPage } from '../pages/list/list';
+
 import { DetailPage } from '../pages/detail/detail';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { ReviewsProvider } from '../providers/reviews/reviews';
 // import { LoginPage } from '../pages/login/login';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +45,6 @@ import { ReviewsProvider } from '../providers/reviews/reviews';
      ListPage,
      DetailPage,
      LoginPage
-
   ],
   providers: [
     StatusBar,
