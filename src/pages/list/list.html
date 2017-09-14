@@ -15,8 +15,12 @@
 <ion-content padding>
 
   <ion-list>
-    <div *ngFor="let data of listData"><!-- {{data | json}} -->
-      <button ion-item (click)="goToMyPage(data)">{{data.fullName}}</button>
+    <div *ngFor="let data of listData">
+      <!-- {{data | json}} -->
+      <button ion-item (click)="goToMyPage(data)">
+        {{data.fullName}}
+        <p>{{data.nickName}}</p>
+      </button>
     </div>
   </ion-list>
 

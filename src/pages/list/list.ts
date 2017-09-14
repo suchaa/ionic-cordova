@@ -20,11 +20,13 @@ export class ListPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
+
   // id: string;
   // fullName: string;
   // nickName: string;
   // social: string;
   // tel: string;
+
   listData = [
     {
       id: '1',
@@ -37,14 +39,14 @@ export class ListPage {
       id: '2',
       fullName: 'Somying Jaidee',
       nickName: 'Ying',
-      social: 'facebook.com/xxx',
+      social: 'facebook.com/somying',
       tel: '088888888'
     },
     {
       id: '3',
       fullName: 'Somchai Jaidee',
       nickName: 'Chai',
-      social: 'facebook.com/yyy',
+      social: 'facebook.com/somchai',
       tel: '077777777'
     }
   ];
@@ -57,27 +59,25 @@ export class ListPage {
     //   data => {
     //     this.fullname = data.data.fullName;
     //     console.log(this.fullname);
-
     //   })
   }
 
   goToMyPage(data) {
-    console.log(data);
-    // console.log(data.fullName);
-    // console.log(data.nickName);
-    // console.log(data.social);
-    // console.log(data.tel);
-    console.log('SUCCESS');
+    //console.log(data);
+    console.log('SUCCESS!');
+ 
+    //this.navCtrl.push('detail', DetailPage, data);
 
-    // go to the detail component
-    this.navCtrl.push('detail', DetailPage
-      // ,{
-      //   name: 'xxx',
-      //   nick: 'x',
-      //   social: 'xx',
-      //   tel: 'xxxxxxxxx'
-      // }
-    )
+    /**
+     * go to the detail component && ส่งข้อมูลไปหน้า DetailPage
+     */
+    this.navCtrl.push( DetailPage, {
+      id: data.id,
+      fullName: data.fullName,
+      nickName: data.nickName,
+      social: data.social,
+      tel: data.tel
+    });
   }
 
 }

@@ -13,20 +13,21 @@
     <ion-list-header>contact</ion-list-header>
     <ion-item>
       <ion-icon name="md-contact" item-start></ion-icon>
-     Name: 
+      <b>Name:</b> {{name}}
     </ion-item>
     <ion-item>
       <ion-icon name="ios-contact" item-start></ion-icon>
-      Nickname:
+      <b>Nickname:</b> {{nick}}
     </ion-item>
     <ion-item>
       <ion-icon name="md-bookmark" item-start></ion-icon>
-      Social:
+      <b>Social:</b> {{social}}
     </ion-item>
     <ion-item>
       <ion-icon name="ios-call" item-start></ion-icon>
-      Tel:
+      <b>Tel:</b> {{tel}}
     </ion-item>
   </ion-list>
-  <button ion-button full color="light">Contact</button>
+  <button ion-button full color="light" (click)="btnContact(tel)">Contact</button>
+
 </ion-content>
