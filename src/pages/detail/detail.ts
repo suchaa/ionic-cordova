@@ -11,10 +11,10 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 })
 export class DetailPage {
 
-  listData = [];
+  //listData = [];
   id: string;
-  name: string;
-  nick: string;
+  fullName: string;
+  nickName: string;
   social: string;
   tel: string;
 
@@ -23,11 +23,11 @@ export class DetailPage {
      * รับข้อมูลที่ส่งมาจากหน้า listPage
      */
     this.id = this.navParams.get('id');
-    this.name = this.navParams.get('fullName');
-    this.nick = this.navParams.get('nickName');
+    this.fullName = this.navParams.get('fullName');
+    this.nickName = this.navParams.get('nickName');
     this.social = this.navParams.get('social');
     this.tel = this.navParams.get('tel');
-    console.log('data: ', this.id, this.name, this.nick, this.social, this.tel);
+    console.log('data: ', this.id, this.fullName, this.nickName, this.social, this.tel);
  
   }
 

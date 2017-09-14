@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, MenuController } from 'ionic-angular';
 
 @IonicPage({
   name: 'home',
@@ -13,13 +13,13 @@ import { IonicPage, NavController } from 'ionic-angular';
 
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, public menuCtrl: MenuController) {
+    menuCtrl.enable(true);
   }
   
-   openPage(){
-    console.log('SUCCESS');
+  //  openPage(){
+  //   console.log('SUCCESS');
     
-  }
+  // }
 
 }

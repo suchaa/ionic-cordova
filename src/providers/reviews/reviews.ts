@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -24,14 +24,31 @@ export class ReviewsProvider {
     }
 
     return new Promise(resolve => {
-
       this.http.get('http://localhost:8080/api/reviews')
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
+          //console.log(this.data);
           resolve(this.data);
         });
     });
+  }
+
+  addData(data) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    this.http.post('http://localhost:8080/api/reviews', JSON.stringify(data), { headers: headers })
+      .subscribe(res => {
+        console.log(res.json());
+      });
+  }
+
+  deleteData(id) {
+    this.http.delete('http://localhost:8080/api/reviews/' + id)
+      .subscribe((res) => {
+        console.log(res.json());
+      });
   }
 
 }

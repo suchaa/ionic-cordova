@@ -1,4 +1,4 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<!-- <ion-nav [root]="rootPage"></ion-nav> -->
 
 <ion-header>
   <ion-navbar>
@@ -8,6 +8,11 @@
     <ion-title>
       List
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goToAddDataPage()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -17,9 +22,10 @@
   <ion-list>
     <div *ngFor="let data of listData">
       <!-- {{data | json}} -->
-      <button ion-item (click)="goToMyPage(data)">
+      <button ion-item (click)="goToDetailPage(data)">
         {{data.fullName}}
         <p>{{data.nickName}}</p>
+        <button ion-button item-end (click)="deleteReview(data)">Delete</button>
       </button>
     </div>
   </ion-list>

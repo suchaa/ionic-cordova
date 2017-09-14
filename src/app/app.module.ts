@@ -7,16 +7,12 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-
-//import { LoginPage } from '../pages/login/login';
-//import { ListPage } from '../pages/list/list';
-
-import { DetailPage } from '../pages/detail/detail';
 import { ListPage } from '../pages/list/list';
+import { DetailPage } from '../pages/detail/detail';
 import { LoginPage } from '../pages/login/login';
-import { ReviewsProvider } from '../providers/reviews/reviews';
-// import { LoginPage } from '../pages/login/login';
+import { AddDataPage } from '../pages/add-data/add-data';
 
+import { ReviewsProvider } from '../providers/reviews/reviews';
 
 @NgModule({
   declarations: [
@@ -24,7 +20,8 @@ import { ReviewsProvider } from '../providers/reviews/reviews';
     HomePage,
     ListPage,
     DetailPage,
-    LoginPage
+    LoginPage,
+    AddDataPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +31,8 @@ import { ReviewsProvider } from '../providers/reviews/reviews';
         { component: HomePage, name: 'home', segment: 'home'},
         { component: ListPage, name:'list', segment:'list'},
         { component: DetailPage, name: 'detail', segment: 'detail'},
-        { component: LoginPage, name: 'login', segment: 'login'}
+        { component: LoginPage, name: 'login', segment: 'login'},
+        { component: AddDataPage, name: 'add-data', segment: 'add-data'}
       ]
     })
   ],
@@ -44,7 +42,8 @@ import { ReviewsProvider } from '../providers/reviews/reviews';
      HomePage,
      ListPage,
      DetailPage,
-     LoginPage
+     LoginPage,
+     AddDataPage
   ],
   providers: [
     StatusBar,
