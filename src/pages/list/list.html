@@ -16,18 +16,26 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
 
-  <ion-list>
-    <div *ngFor="let data of listData">
-      <!-- {{data | json}} -->
-      <button ion-item (click)="goToDetailPage(data)">
-        {{data.fullName}}
-        <p>{{data.nickName}}</p>
-        <button ion-button item-end (click)="deleteReview(data)">Delete</button>
-      </button>
-    </div>
-  </ion-list>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingText="Pull to refresh..." refreshingText="Refreshing...">
+
+        </ion-refresher-content>
+      </ion-refresher>
+
+      <ion-list>
+          
+          <div *ngFor="let data of listData">
+            <!-- {{data | json}} -->
+            <button ion-item (click)="goToDetailPage(data)">
+              {{data.fullName}}
+              <p>{{data.nickName}}</p>
+              <ion-icon item-start ios="ios-contact" md="md-contact"></ion-icon>
+              <button ion-button item-end color="danger" (click)="deleteReview(data)">Delete</button>
+            </button>
+          </div>
+
+      </ion-list>
 
 </ion-content>

@@ -1,22 +1,27 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>detail</ion-title>
+    <ion-title>Detail</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
 
-  <ion-list >
-    <img src="http://lorempixel.com/100/100">
+  <ion-list>
+
+    <ion-avatar>
+      <img class="img-detail" src="http://lorempixel.com/100/100">
+    </ion-avatar>
+
     <ion-list-header>contact</ion-list-header>
+
     <ion-item>
-      <ion-icon name="md-contact" item-start></ion-icon>
+      <ion-icon ios="ios-contact" md="md-contact" item-start></ion-icon>
       <b>Name:</b> {{fullName}}
     </ion-item>
     <ion-item>
-      <ion-icon name="ios-contact" item-start></ion-icon>
+      <ion-icon ios="ios-color-wand" md="md-color-wand" item-start></ion-icon>
       <b>Nickname:</b> {{nickName}}
     </ion-item>
     <ion-item>

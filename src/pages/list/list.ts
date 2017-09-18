@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, ModalController, LoadingController } from 'ionic-angular';
 // import { Http } from '@angular/http';
 // import 'rxjs/add/operator/map';
 import { DetailPage } from '../../pages/detail/detail';
@@ -19,21 +19,25 @@ import { ReviewsProvider } from '../../providers/reviews/reviews';
 })
 export class ListPage {
 
+  listData: any;
+  //searchText = "";
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public reviewService: ReviewsProvider,
-    public toastCtrl: ToastController
-  ) 
-  { }
+    public toastCtrl: ToastController,
+    public modalCtrl: ModalController,
+    public loadingCtrl: LoadingController
+  ) {
+
+  }
 
   // id: string;
   // fullName: string;
   // nickName: string;
   // social: string;
   // tel: string;
-
-  listData: any;
 
   /*   listData = [
       {
@@ -63,10 +67,38 @@ export class ListPage {
     //console.log('data:', this.listData);
     console.log('ionViewDidLoad ListPage');
 
+    this.loadData();
+    //this.presentLoading();
+  }
+
+  loadData() {
+    console.log('data test');
     this.reviewService.getReviews().then((data) => {
       console.log('data:', data);
       this.listData = data;
     });
+  }
+
+  // presentLoading() {
+  //   let loader = this.loadingCtrl.create({
+  //     content: "Please wait...",
+  //     duration: 3000
+  //   });
+  //   loader.present().then(() => {
+  //     this.loadData();
+  //     loader.dismiss();
+  //   });
+  // }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      this.loadData();
+      refresher.complete();
+    }, 2000);
+
   }
 
   goToDetailPage(data) {
@@ -85,8 +117,10 @@ export class ListPage {
     });
   }
 
-  goToAddDataPage(){
-    this.navCtrl.push(AddDataPage);
+  goToAddDataPage() {
+    let modal = this.modalCtrl.create(AddDataPage);
+    modal.present();
+    //this.navCtrl.push(AddDataPage);
   }
 
   deleteReview(data) {

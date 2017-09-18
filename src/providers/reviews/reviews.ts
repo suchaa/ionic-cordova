@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Rx';
 
 /*
   Generated class for the ReviewsProvider provider.
@@ -12,9 +13,17 @@ import 'rxjs/add/operator/map';
 export class ReviewsProvider {
 
   data: any;
+  options: RequestOptions;
 
   constructor(public http: Http) {
     console.log('Hello ReviewsProvider Provider');
+
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'bearer ' + localStorage.getItem('token')
+    });
+    this.options = new RequestOptions({ headers: headers });
+
     this.data = null;
   }
 
@@ -35,10 +44,8 @@ export class ReviewsProvider {
   }
 
   addData(data) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
-    this.http.post('http://localhost:8080/api/reviews', JSON.stringify(data), { headers: headers })
+    let bodyString = JSON.stringify(data)
+    this.http.post('http://localhost:8080/api/reviews',bodyString , this.options)
       .subscribe(res => {
         console.log(res.json());
       });

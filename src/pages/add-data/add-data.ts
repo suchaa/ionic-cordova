@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, App, NavController, NavParams, ViewController } from 'ionic-angular';
 import { ReviewsProvider } from '../../providers/reviews/reviews';
-import { ListPage } from '../../pages/list/list';
+//import { ListPage } from '../../pages/list/list';
 
 /**
  * Generated class for the AddDataPage page.
@@ -28,9 +28,11 @@ export class AddDataPage {
   tel: string;
 
   constructor(
+    public app: App,
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public reviewService: ReviewsProvider
+    public reviewService: ReviewsProvider,
+    public viewCtrl: ViewController
   ) 
   { }
 
@@ -51,8 +53,15 @@ export class AddDataPage {
     
     if(datas){
       this.reviewService.addData(datas);
-      this.navCtrl.push(ListPage);
+      //this.navCtrl.push(ListPage);
+      //this.navCtrl.setRoot(ListPage);
+      //this.app.getRootNav().setRoot(ListPage);
+      this.viewCtrl.dismiss();
     }
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 
 }
