@@ -13,6 +13,7 @@ import { LoginPage } from '../pages/login/login';
 import { AddDataPage } from '../pages/add-data/add-data';
 
 import { ReviewsProvider } from '../providers/reviews/reviews';
+import { LoginProvider } from '../providers/login/login';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ReviewsProvider } from '../providers/reviews/reviews';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ReviewsProvider
+    ReviewsProvider,
+    LoginProvider
   ]
 })
 export class AppModule {}

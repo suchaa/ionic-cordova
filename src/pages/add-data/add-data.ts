@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, App, NavController, NavParams, ViewController } from 'ionic-angular';
+import {
+  IonicPage,
+  App,
+  NavController,
+  NavParams,
+  ViewController,
+  AlertController
+} from 'ionic-angular';
 import { ReviewsProvider } from '../../providers/reviews/reviews';
 //import { ListPage } from '../../pages/list/list';
 
@@ -20,8 +27,9 @@ import { ReviewsProvider } from '../../providers/reviews/reviews';
 })
 export class AddDataPage {
 
+  mode: string = "ADD";
   listData: any;
-
+  id: string;
   fullName: string;
   nickName: string;
   social: string;
@@ -29,35 +37,75 @@ export class AddDataPage {
 
   constructor(
     public app: App,
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public reviewService: ReviewsProvider,
-    public viewCtrl: ViewController
-  ) 
-  { }
+    public viewCtrl: ViewController,
+    public alertCtrl: AlertController
+  ) {
+
+    this.id = this.navParams.get('id');
+    this.fullName = this.navParams.get('fullName');
+    this.nickName = this.navParams.get('nickName');
+    this.social = this.navParams.get('social');
+    this.tel = this.navParams.get('tel');
+    console.log('data: ', this.id, this.fullName, this.nickName, this.social, this.tel);
+
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddDataPage');
+
+    if (this.id) {
+      let id = this.id;
+
+      this.mode = 'EDIT';
+      this.id = id;
+    }
+
   }
 
-  AddData(){
-    console.log('Add Success!');
-
+  AddData() {
     let datas = {
       fullName: this.fullName,
       nickName: this.nickName,
       social: this.social,
       tel: this.tel,
     }
-    //console.log('datas: ', datas);
-    
-    if(datas){
-      this.reviewService.addData(datas);
-      //this.navCtrl.push(ListPage);
-      //this.navCtrl.setRoot(ListPage);
-      //this.app.getRootNav().setRoot(ListPage);
-      this.viewCtrl.dismiss();
-    }
+
+    let prompt = this.alertCtrl.create({
+      title: 'To save data',
+      message: datas.fullName,
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('click cancel!');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            console.log('click save!');
+            if (this.mode === "EDIT") {
+              this.reviewService.updateData(this.id, datas).subscribe(
+                data => {
+                  console.log('Edit Success!');
+                  this.viewCtrl.dismiss();
+                });
+            } else {
+              this.reviewService.addData(datas);
+              //this.navCtrl.setRoot(ListPage);
+              //this.app.getRootNav().setRoot(ListPage);
+              console.log('Add Success!');
+              this.viewCtrl.dismiss();
+            }
+          }
+        }
+      ]
+    });
+    prompt.present();
+
   }
 
   dismiss() {

@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { 
+  IonicPage, 
+  NavController, 
+  NavParams, 
+  AlertController,
+  ViewController
+ } from 'ionic-angular';
+import { LoginProvider } from '../../providers/login/login';
+import { HomePage } from '../../pages/home/home';
 /**
  * Generated class for the LoginPage page.
  *
@@ -18,16 +25,42 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  username: string;
+  password: string;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public loginService: LoginProvider,
+    public alertCtrl: AlertController,
+    public viewCtrl: ViewController
+  ) {
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  singin(){
-    console.log('signin click!');
-    
-  }
+  singin() {
+    let datas = {
+      username: this.username,
+      password: this.password
+    }
+
+    this.loginService.doLogin(datas)
+      .subscribe((res) => {
+        if (res.success) {
+          console.log('login success!.');
+          localStorage.setItem('token', res.token);
+          //ไม่เอาอันนี้
+          this.navCtrl.setRoot(HomePage);
+        } else {
+          console.log('login fail!.');
+        }
+      }
+    )
+  };
+
 
 }

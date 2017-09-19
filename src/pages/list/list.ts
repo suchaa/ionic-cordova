@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, ModalController, LoadingController } from 'ionic-angular';
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  ToastController,
+  ModalController,
+  LoadingController,
+  ActionSheetController
+} from 'ionic-angular';
 // import { Http } from '@angular/http';
 // import 'rxjs/add/operator/map';
 import { DetailPage } from '../../pages/detail/detail';
 import { AddDataPage } from '../../pages/add-data/add-data';
-//import { HomePage } from '../../pages/home/home';
-//import { LoginPage } from '../../pages/login/login';
-//import { AppModule } from '../../app/app.module';
 import { ReviewsProvider } from '../../providers/reviews/reviews';
 
 @IonicPage({
@@ -28,7 +33,8 @@ export class ListPage {
     public reviewService: ReviewsProvider,
     public toastCtrl: ToastController,
     public modalCtrl: ModalController,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public actionSheetCtrl: ActionSheetController
   ) {
 
   }
@@ -101,21 +107,9 @@ export class ListPage {
 
   }
 
-  goToDetailPage(data) {
-    //console.log(data);
-    console.log('SUCCESS!');
-
-    /**
-     * go to the detail component && ส่งข้อมูลไปหน้า DetailPage
-     */
-    this.navCtrl.push(DetailPage, {
-      id: data._id,
-      fullName: data.fullName,
-      nickName: data.nickName,
-      social: data.social,
-      tel: data.tel
-    });
-  }
+  // getItems(ev: any) {
+    
+  // }
 
   goToAddDataPage() {
     let modal = this.modalCtrl.create(AddDataPage);
@@ -123,24 +117,74 @@ export class ListPage {
     //this.navCtrl.push(AddDataPage);
   }
 
-  deleteReview(data) {
-    //Remove locally
-    let index = this.listData.indexOf(data);
+  goToDetailPage(data) {
+    //console.log(data);
 
-    if (index > -1) {
-      this.listData.splice(index, 1);
-    }
+    let actionSheet = this.actionSheetCtrl.create({
+      title: data.fullName,
+      buttons: [
+        {
+          text: 'Show Detail',
+          handler: () => {
+            console.log('Show Detail clicked');
+            /**
+            * go to the detail component && ส่งข้อมูลไปหน้า DetailPage
+            */
+            this.navCtrl.push(DetailPage, {
+              id: data._id,
+              fullName: data.fullName,
+              nickName: data.nickName,
+              social: data.social,
+              tel: data.tel
+            });
+          }
+        }, {
+          text: 'Edit',
+          handler: () => {
+            console.log('Edit clicked');
+            let modal = this.modalCtrl.create(AddDataPage, {
+              id: data._id,
+              fullName: data.fullName,
+              nickName: data.nickName,
+              social: data.social,
+              tel: data.tel
+            });
+            modal.present();
+          }
+        }, {
+          text: 'Delete',
+          role: 'destructive',
+          handler: () => {
+            console.log('Delete clicked');
 
-    //Remove from database
-    this.reviewService.deleteData(data._id);
+            //Remove locally
+            let index = this.listData.indexOf(data);
 
-    let toast = this.toastCtrl.create({
-      message: 'Delete successfully.',
-      duration: 3000,
-      showCloseButton: true,
-      closeButtonText: 'Ok'
+            if (index > -1) {
+              this.listData.splice(index, 1);
+            }
+
+            //Remove from database
+            this.reviewService.deleteData(data._id);
+
+            let toast = this.toastCtrl.create({
+              message: 'Delete successfully.',
+              duration: 3000,
+              showCloseButton: true,
+              closeButtonText: 'Ok'
+            });
+            toast.present();
+          }
+        }, {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
     });
-    toast.present();
+    actionSheet.present();
   }
 
 }
