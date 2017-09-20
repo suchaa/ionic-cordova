@@ -5,7 +5,8 @@ import {
   NavParams,
   AlertController,
   ViewController,
-  Platform 
+  Platform ,
+  MenuController
 } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login';
 import { HomePage } from '../../pages/home/home';
@@ -38,9 +39,11 @@ export class LoginPage {
     public loginService: LoginProvider,
     public alertCtrl: AlertController,
     public viewCtrl: ViewController,
-    platform: Platform
+    public platform: Platform,
+    public menu: MenuController
   ) {
     this.isSegment = platform.is('android');
+   // menu.enable(true);
   }
 
   ionViewDidLoad() {

@@ -13,8 +13,8 @@ import { IonicPage, NavController, MenuController } from 'ionic-angular';
 
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public menuCtrl: MenuController) {
-    menuCtrl.enable(true);
+  constructor(public navCtrl: NavController, public menu: MenuController) {
+    //menu.enable(true);
   }
   
   //  openPage(){

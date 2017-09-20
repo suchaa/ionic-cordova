@@ -6,7 +6,8 @@ import {
   ToastController,
   ModalController,
   LoadingController,
-  ActionSheetController
+  ActionSheetController,
+  MenuController
 } from 'ionic-angular';
 // import { Http } from '@angular/http';
 // import 'rxjs/add/operator/map';
@@ -34,9 +35,10 @@ export class ListPage {
     public toastCtrl: ToastController,
     public modalCtrl: ModalController,
     public loadingCtrl: LoadingController,
-    public actionSheetCtrl: ActionSheetController
+    public actionSheetCtrl: ActionSheetController,
+    public menu: MenuController
   ) {
-
+    //menu.enable(true);
   }
 
   // id: string;

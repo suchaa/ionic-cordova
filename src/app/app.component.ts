@@ -13,15 +13,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
+
   rootPage:any = HomePage;
-  page: Array<{ title: string, Component: any}>
+
+  pages: Array<{ title: string, Component: any}>
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
-    this.page = [
-      { title: 'home' , Component: HomePage },
-      { title: 'list' , Component: ListPage },
+    this.pages = [
+      { title: 'Home' , Component: HomePage },
+      { title: 'List' , Component: ListPage },
       { title: 'Profile' , Component: LoginPage }
     ];
 
