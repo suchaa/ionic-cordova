@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { 
-  IonicPage, 
-  NavController, 
-  NavParams, 
+import {
+  IonicPage,
+  NavController,
+  NavParams,
   AlertController,
-  ViewController
- } from 'ionic-angular';
+  ViewController,
+  Platform 
+} from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login';
 import { HomePage } from '../../pages/home/home';
 /**
@@ -28,14 +29,18 @@ export class LoginPage {
   username: string;
   password: string;
 
+  pet: string = "signin";
+  isSegment: boolean = false;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public loginService: LoginProvider,
     public alertCtrl: AlertController,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    platform: Platform
   ) {
-
+    this.isSegment = platform.is('android');
   }
 
   ionViewDidLoad() {
@@ -60,7 +65,12 @@ export class LoginPage {
         }
       }
     )
+
   };
 
+  singup(){
+    console.log('click signup!');
+    
+  }
 
 }

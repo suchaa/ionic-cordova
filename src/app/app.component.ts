@@ -22,7 +22,7 @@ export class MyApp {
     this.page = [
       { title: 'home' , Component: HomePage },
       { title: 'list' , Component: ListPage },
-      { title: 'login' , Component: LoginPage }
+      { title: 'Profile' , Component: LoginPage }
     ];
 
   }

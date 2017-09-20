@@ -19,19 +19,49 @@
 
 <ion-content padding>
 
-  <ion-list>
 
-    <ion-item>
-      <ion-icon ios="ios-person" md="md-person" item-start></ion-icon>
-      <ion-input name="username" id="username" type="text" [(ngModel)]="username" placeholder="Username"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-icon ios="ios-unlock" md="md-unlock" item-start></ion-icon>
-      <ion-input name="password" id="password" type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
-    </ion-item>
 
-  </ion-list>
+  <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="signin">
+        Sign in
+      </ion-segment-button>
+      <ion-segment-button value="signup">
+        Sign up
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
-  <button ion-button full color="secondary" (click)="singin()">Sign In</button>
+  <div [ngSwitch]="pet">
+    <ion-list no-lines *ngSwitchCase="'signin'">
+      <ion-item>
+        <ion-icon ios="ios-person" md="md-person" item-start></ion-icon>
+        <ion-input name="username" id="username" type="text" [(ngModel)]="username" placeholder="Username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon ios="ios-unlock" md="md-unlock" item-start></ion-icon>
+        <ion-input name="password" id="password" type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
+      </ion-item>
+      <br>
+      <button ion-button full color="secondary" (click)="singin()">Sign In</button>
+    </ion-list>
+
+    <ion-list no-lines *ngSwitchCase="'signup'">
+      <ion-item>
+        <!-- <ion-icon ios="ios-person" md="md-person" item-start></ion-icon> -->
+        <ion-input name="fullname" id="fullname" type="text" [(ngModel)]="fullname" placeholder="Your Name Is"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-icon ios="ios-person" md="md-person" item-start></ion-icon> -->
+        <ion-input name="username" id="username" type="text" [(ngModel)]="username" placeholder="Your Username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-icon ios="ios-unlock" md="md-unlock" item-start></ion-icon> -->
+        <ion-input name="password" id="password" type="password" [(ngModel)]="password" placeholder="Your Password"></ion-input>
+      </ion-item>
+      <br>
+      <button ion-button full color="secondary" (click)="singup()">Sign Up</button>
+    </ion-list>
+  </div>
 
 </ion-content>
